@@ -123,7 +123,7 @@ if __name__ == "__main__":
         elif hasattr(e, 'code'):
             print ('The server couldn\'t fulfill the request.')
             print ('Error code: ', e.code)
-            break
+ 
     else:
         print(scan_xss(url))
 
