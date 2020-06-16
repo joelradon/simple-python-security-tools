@@ -125,7 +125,12 @@ if __name__ == "__main__":
         try:
             response = urllib.request.urlopen(request)
         except URLError as e:
-            url = get_url()
+            if hasattr(e, 'reason'):
+                print ('We failed to reach a server.')
+                print ('Reason: ', e.reason)
+            elif hasattr(e, 'code'):
+                 print ('The server couldn\'t fulfill the request.')
+                 print ('Error code: ', e.code)
             continue
         break
  
