@@ -17,3 +17,9 @@ python3 xss_scanner.py
 ssh_bruteforce.py usage:
 
 python3 ssh_bruteforce.py --host 192.168.1.2 -u root -P top_1000_passwords.txt
+
+
+zip_bruteforce.py usage:
+
+python3 zip_bruteforce.py
+(You will be prompted to enter a valid file location. It uses top_1000_passwords.txt by default)
