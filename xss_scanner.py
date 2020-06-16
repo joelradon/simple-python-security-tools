@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import requests
 from pprint import pprint
 from bs4 import BeautifulSoup as bs
@@ -94,37 +96,37 @@ from urllib.request import urlopen
 from urllib.request import URLError
 import re
 
-if __name__ == "__main__":
-    def valid_url(url):
-        valid = re.search("^http[s]*://", url)
-        if valid:
-            return True
-        else:
-            return False
-    
+def valid_url(url):
+    valid = re.search("^http[s]*://", url)
+    if valid:
+        return True
+    else:
+        return False
+
+def get_url():
     while True:
-        url = input("Please enter a url: ")
-    
+        url = input("Please enter a URL: ")
+
         if not valid_url(url):
             print("Sorry please enter a valid URL")
             continue
         else:
             break
+    return url
 
-    print(url)
-    #req = request(url)
-    request = urllib.request.Request(url)
-    try:
-        response = urllib.request.urlopen(request)
-    except URLError as e:
-        if hasattr(e, 'reason'):
-            print ('We failed to reach a server.')
-            print ('Reason: ', e.reason)
-        elif hasattr(e, 'code'):
-            print ('The server couldn\'t fulfill the request.')
-            print ('Error code: ', e.code)
+if __name__ == "__main__":
+
+    while True:
+        url = get_url()
+        
+        print(url)
+        #req = request(url)
+        request = urllib.request.Request(url)
+        try:
+            response = urllib.request.urlopen(request)
+        except URLError as e:
+            url = get_url()
+            continue
+        break
  
-    else:
-        print(scan_xss(url))
-
-
+    print(scan_xss(url))
